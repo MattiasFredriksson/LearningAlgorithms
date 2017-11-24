@@ -74,6 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -90,6 +91,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -110,12 +112,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConceptLearner.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\RandomGenerator.cpp" />
+    <ClCompile Include="src\ConceptLearner\ConceptLearner.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Neural\Neural.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConceptLearner.h" />
-    <ClInclude Include="Sentences.h" />
+    <ClInclude Include="include\ConceptLearner\ConceptLearner.h" />
+    <ClInclude Include="include\ConceptLearner\Sentences.h" />
+    <ClInclude Include="include\Neural\Neural.h" />
+    <ClInclude Include="include\RandomGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+MaskinInlarning/MaskinInlarning.VC.VC.opendb
+MaskinInlarning/MaskinInlarning.VC.db
+*.pdb
+MaskinInlarning/Debug/MaskinInlarning.ilk
