@@ -49,3 +49,8 @@ MaskinInlarning/MaskinInlarning.VC.VC.opendb
 MaskinInlarning/MaskinInlarning.VC.db
 *.pdb
 MaskinInlarning/Debug/MaskinInlarning.ilk
+*.tlog
+MaskinInlarning/MaskinInlarning/Debug/MaskinInlarning.log
+*.obj
+MaskinInlarning/Debug/MaskinInlarning.ilk
+*.pdb

@@ -1,3 +1,14 @@
-﻿  main.cpp
+﻿  Neural.cpp
+e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\neural\neural.cpp(258): warning C4101: 'e': unreferenced local variable
+e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\neural\neural.cpp(282): warning C4101: 'e': unreferenced local variable
+  main.cpp
+  ConceptLearner.cpp
+e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\include\conceptlearner\sentences.h(33): warning C4018: '<': signed/unsigned mismatch
+e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\conceptlearner\conceptlearner.cpp(8): warning C4018: '<': signed/unsigned mismatch
+e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\conceptlearner\conceptlearner.cpp(11): warning C4018: '<': signed/unsigned mismatch
+  RandomGenerator.cpp
+  Spambase.cpp
+  Generating Code...
+  LINK : E:\Projects\Programmering C\LearningAlgorithms\MaskinInlarning\Debug\MaskinInlarning.exe not found or not built by the last incremental link; performing full link
   MaskinInlarning.vcxproj -> E:\Projects\Programmering C\LearningAlgorithms\MaskinInlarning\Debug\MaskinInlarning.exe
   MaskinInlarning.vcxproj -> E:\Projects\Programmering C\LearningAlgorithms\MaskinInlarning\Debug\MaskinInlarning.pdb (Partial PDB)
