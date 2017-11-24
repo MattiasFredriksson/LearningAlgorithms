@@ -1,0 +1,6 @@
+﻿  ConceptLearner.cpp
+c:\projects\code\maskininlarning\maskininlarning\sentences.h(33): warning C4018: '<': signed/unsigned mismatch
+c:\projects\code\maskininlarning\maskininlarning\conceptlearner.cpp(8): warning C4018: '<': signed/unsigned mismatch
+c:\projects\code\maskininlarning\maskininlarning\conceptlearner.cpp(11): warning C4018: '<': signed/unsigned mismatch
+  MaskinInlarning.vcxproj -> C:\Projects\Code\MaskinInlarning\Debug\MaskinInlarning.exe
+  MaskinInlarning.vcxproj -> C:\Projects\Code\MaskinInlarning\Debug\MaskinInlarning.pdb (Partial PDB)
