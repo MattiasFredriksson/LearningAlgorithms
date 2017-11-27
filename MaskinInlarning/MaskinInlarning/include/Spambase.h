@@ -63,7 +63,6 @@ public:
 	void convertX();
 
 
-	void outputSciKit();
 
 };
 
