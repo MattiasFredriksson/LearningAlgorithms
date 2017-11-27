@@ -62,5 +62,8 @@ public:
 	//Convert features to specific value representation
 	void convertX();
 
+
+	void outputSciKit();
+
 };
 

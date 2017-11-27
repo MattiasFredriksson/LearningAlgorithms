@@ -100,4 +100,14 @@ void Spambase::read(std::string file)
 		std::cout << "Spambase file: " + file + " could not be opened.\n";
 }
 
+
+void Spambase::outputSciKit()
+{
+	std::ofstream stream("scikit\spambase.data");
+	if (stream.is_open())
+	{
+
+	}
+}
+
 #pragma endregion
