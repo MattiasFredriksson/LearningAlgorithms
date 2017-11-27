@@ -112,7 +112,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Spambase.cpp" />
+    <ClCompile Include="src\Spambase.cpp" />
     <ClCompile Include="src\RandomGenerator.cpp" />
     <ClCompile Include="src\ConceptLearner\ConceptLearner.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -123,7 +123,7 @@
     <ClInclude Include="include\ConceptLearner\Sentences.h" />
     <ClInclude Include="include\Neural\Neural.h" />
     <ClInclude Include="include\RandomGenerator.h" />
-    <ClInclude Include="Spambase.h" />
+    <ClInclude Include="include\Spambase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

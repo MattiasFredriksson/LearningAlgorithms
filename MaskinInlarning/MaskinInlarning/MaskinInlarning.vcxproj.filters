@@ -27,7 +27,7 @@
     <ClCompile Include="src\RandomGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Spambase.cpp">
+    <ClCompile Include="src\Spambase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,7 +44,7 @@
     <ClInclude Include="include\RandomGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spambase.h">
+    <ClInclude Include="include\Spambase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

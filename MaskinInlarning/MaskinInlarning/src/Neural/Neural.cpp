@@ -245,6 +245,7 @@ void Neural::init(int* layers, int length)
 					for (Neuron* n : lay->_neuron) {
 						if (!std::getline(stream, line))
 							throw std::exception("No line for neuron");
+						ss = std::stringstream(line);
 						unsigned int i = 0;
 						while (std::getline(ss, value, ':'))
 							n->_weights[i++] = std::atof(value.c_str());
