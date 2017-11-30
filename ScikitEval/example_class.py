@@ -1,8 +1,6 @@
-
-
+# Simple classification implementation example using the parser.py data.
+#
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from sklearn import neighbors, datasets, metrics
 
 #Load
