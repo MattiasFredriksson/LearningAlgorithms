@@ -2,6 +2,10 @@
 Thumbs.db
 ehthumbs.db
 
+MaskinInlarning/MaskinInlarning/img/
+Exercise-Image_Recognition/testing/
+Exercise-Image_Recognition/training/
+
 # Folder config file
 Desktop.ini
 
@@ -13,7 +17,9 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-
+*.tlog
+*.pdb
+*.idb
 # Windows shortcuts
 *.lnk
 

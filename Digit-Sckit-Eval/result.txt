@@ -1,0 +1,2 @@
+Time 	Time 	Acc 	F-meas
+KNeighborsClassifier	 23.785016663690534 	0.8994 	0.8994

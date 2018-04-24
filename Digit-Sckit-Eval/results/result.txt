@@ -1,0 +1,4 @@
+Time 	Time 	Acc 	F-meas
+KNeighborsClassifier	 19.478790732807322 	0.8994 	0.8994
+DecisionTreeClassifier	 4.413720561998559 	0.8124 	0.8124
+SVC	 356.90475701352534 	0.798 	0.798
