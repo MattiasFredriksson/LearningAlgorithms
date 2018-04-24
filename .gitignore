@@ -11,6 +11,8 @@ Exercise-Image_Recognition/training/
 *.db
 *.enc
 *.log
+*.ipdb
+*.iobj
 
 # Folder config file
 Desktop.ini
