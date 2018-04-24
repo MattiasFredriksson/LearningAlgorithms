@@ -5,6 +5,12 @@ ehthumbs.db
 MaskinInlarning/MaskinInlarning/img/
 Exercise-Image_Recognition/testing/
 Exercise-Image_Recognition/training/
+*.ipch
+*.exe
+*.ilk
+*.db
+*.enc
+*.log
 
 # Folder config file
 Desktop.ini
