@@ -30,7 +30,7 @@ std::string toString(const Conjuction s)
 	if (s._sentence.size() == 0)
 		return "Empty Conjuction\n";
 	std::string str = toString(s._sentence[0]) + "\n";
-	for(int i = 1; i < s._sentence.size(); i++)
+	for(unsigned int i = 1; i < s._sentence.size(); i++)
 		str += "and " + toString(s._sentence[i]) + "\n";
 	return str;
 }

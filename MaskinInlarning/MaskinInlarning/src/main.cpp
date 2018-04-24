@@ -1,11 +1,14 @@
 #include <iostream>
 #include "ConceptLearner/ConceptLearner.h"
 #include "RandomGenerator.h"
-#include "Spambase.h"
+#include "Digit/MNIST.h"
+#include "Digit/KernelFunction.h"
 #include "Neural/Neural.h"
 #include <memory>
+#include "Test.h"
 
-void neuralFunction();
+#define LOG_IMPLEMENTATION
+#include "Log.h"
 
 
 int main()
@@ -14,26 +17,24 @@ int main()
 
 	//test();
 
-	Spambase spambase;
+	MNIST data(1);
+	//data.normalize();
 
-	//spambase = Spambase(); //To copy just create new instance 
+	int ind = 28;
+	data.print(ind);
+	//data.print(ind, 1);
 
+	std::string label = "label.txt";
+	std::string feat = "features.txt";
+	data.printLabels(label);
+	data.printFeatures(feat, 50);
+
+	//outputGraph(data, 2, 4, 0, 100, 50);
+	//outputSegmentedKernels(data, 0, 100, 50);
+
+	//data.calcDistribution();
+
+	
+	std::cout << "Done\n";
 	std::getchar();
-}
-
-
-std::shared_ptr<Neural> constructNet()
-{
-	mf::RandomGenerator rnd({ 1235152, 123981203, 210487124, 1239823 });
-	const int num_layer = 7;
-	int layers[num_layer]{ Spambase::NUM_FEATURES, 29, 15, 8, 4, 2, 1 };
-	return std::shared_ptr<Neural>(new Neural(rnd, layers, num_layer));
-}
-
-
-void neuralFunction()
-{
-	Spambase spambase;
-
-	std::shared_ptr<Neural> net = constructNet();
 }

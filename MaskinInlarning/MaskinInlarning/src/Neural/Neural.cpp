@@ -257,6 +257,7 @@ void Neural::init(int* layers, int length)
 				std::cout << "Loaded neural network.\n";
 			}
 			catch (const std::exception& e) {
+				std::cout << e.what() << std::endl;
 				std::cout << "Could not parse neuron.\n";
 			}
 		}
@@ -281,6 +282,7 @@ void Neural::init(int* layers, int length)
 			return true;
 		}
 		catch (const std::exception& e) {
+			std::cout << e.what() << std::endl;
 			return false;
 		}
 	}

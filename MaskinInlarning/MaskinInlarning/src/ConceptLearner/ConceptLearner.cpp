@@ -5,10 +5,10 @@
 Conjuction LGG_Conj(const Conjuction& x, const Conjuction& y)
 {
 	Conjuction intersect; //New sentene.
-	for (int i = 0; i < x._sentence.size(); i++) {
+	for (unsigned int i = 0; i < x._sentence.size(); i++) {
 		const Literal& l = x._sentence[i];
 		//Find if l exist in y:
-		for (int ii = 0; ii < y._sentence.size(); ii++) {
+		for (unsigned int ii = 0; ii < y._sentence.size(); ii++) {
 			if (l == y._sentence[ii]) {
 				// Append literal to our new sentence:
 				intersect._sentence.push_back(l);

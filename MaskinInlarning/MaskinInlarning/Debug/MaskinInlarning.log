@@ -1,7 +1,0 @@
-﻿  Spambase.cpp
-  Neural.cpp
-e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\neural\neural.cpp(259): warning C4101: 'e': unreferenced local variable
-e:\projects\programmering c\learningalgorithms\maskininlarning\maskininlarning\src\neural\neural.cpp(283): warning C4101: 'e': unreferenced local variable
-  Generating Code...
-  MaskinInlarning.vcxproj -> E:\Projects\Programmering C\LearningAlgorithms\MaskinInlarning\Debug\MaskinInlarning.exe
-  MaskinInlarning.vcxproj -> E:\Projects\Programmering C\LearningAlgorithms\MaskinInlarning\Debug\MaskinInlarning.pdb (Partial PDB)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -21,32 +21,32 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{041F5912-7B1E-4575-868E-C82E1CE52416}</ProjectGuid>
     <RootNamespace>MaskinInlarning</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -112,18 +112,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Spambase.cpp" />
+    <ClCompile Include="src\Digit\BinaryImage.cpp" />
+    <ClCompile Include="src\Digit\DigitImageByte.cpp" />
+    <ClCompile Include="src\Digit\FeatureGraph.cpp" />
+    <ClCompile Include="src\Digit\Graph.cpp" />
+    <ClCompile Include="src\Digit\KernelByte.cpp" />
+    <ClCompile Include="src\Digit\KernelFunction.cpp" />
+    <ClCompile Include="src\Digit\Math.cpp" />
+    <ClCompile Include="src\Digit\MNSIT.cpp" />
+    <ClCompile Include="src\Digit\Contour.cpp" />
+    <ClCompile Include="src\Digit\Quad.cpp" />
+    <ClCompile Include="src\Digit\Vertice.cpp" />
+    <ClCompile Include="src\DisjointSet.cpp" />
+    <ClCompile Include="src\Spambase\Functions.cpp" />
+    <ClCompile Include="src\Spambase\Spambase.cpp" />
     <ClCompile Include="src\RandomGenerator.cpp" />
     <ClCompile Include="src\ConceptLearner\ConceptLearner.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Neural\Neural.cpp" />
+    <ClCompile Include="src\Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ConceptLearner\ConceptLearner.h" />
     <ClInclude Include="include\ConceptLearner\Sentences.h" />
+    <ClInclude Include="include\Digit\BinaryImage.h" />
+    <ClInclude Include="include\Digit\Contour.h" />
+    <ClInclude Include="include\Digit\DigitImageByte.h" />
+    <ClInclude Include="include\Digit\FeatureGraph.h" />
+    <ClInclude Include="include\Digit\Graph.h" />
+    <ClInclude Include="include\Digit\KernelByte.h" />
+    <ClInclude Include="include\Digit\KernelFunction.h" />
+    <ClInclude Include="include\Digit\Math.h" />
+    <ClInclude Include="include\Digit\MNIST.h" />
+    <ClInclude Include="include\Digit\Quad.h" />
+    <ClInclude Include="include\Digit\Vertice.h" />
+    <ClInclude Include="include\DisjointSet.h" />
+    <ClInclude Include="include\Line.h" />
+    <ClInclude Include="include\Point.h" />
+    <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\Neural\Neural.h" />
     <ClInclude Include="include\RandomGenerator.h" />
-    <ClInclude Include="include\Spambase.h" />
+    <ClInclude Include="include\Spambase\Functions.h" />
+    <ClInclude Include="include\Spambase\Spambase.h" />
+    <ClInclude Include="include\Test.h" />
+    <ClInclude Include="include\Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
