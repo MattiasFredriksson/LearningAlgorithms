@@ -18,11 +18,13 @@ public:
 	DigitImageByte(const DigitImageByte &copy);
 	~DigitImageByte();
 
-	void print(unsigned char threshold, int mode = 0);
+	void print(int mode = 0);
 
 	KernelByte getKernel(int x, int y, int kernel_dim);
 	std::vector<KernelByte> genKernels(int dim);
 
+	/* Get number of pixels in the image
+	*/
 	size_t size() const { return _width * _height; }
 	int index(int x, int y) { return x + y * _width; };
 	int index(Point p) { return p.X + p.Y * _width; };
@@ -33,5 +35,9 @@ public:
 
 	bool unNormalized();
 	void normalize();
+
+	std::shared_ptr<unsigned int> histogram();
+	void histogram(unsigned int histo[256]);
+	unsigned char threshold_Otsu();
 };
 

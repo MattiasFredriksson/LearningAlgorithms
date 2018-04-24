@@ -22,13 +22,15 @@ DigitImageByte::DigitImageByte(const DigitImageByte &copy)
 		_pixels[i] = copy._pixels[i];
 }
 
-void DigitImageByte::print(unsigned char threshold, int mode)
+#pragma region Print stuff
+
+void DigitImageByte::print(int mode)
 {
 
 	for (size_t col = 0; col < _width; col++)
 		std::cout << '_';
 	std::cout << '\n';
-
+	int threshold = (int)threshold_Otsu();
 	if (mode == 0)
 		printPixels(threshold, true);
 	else if (mode == 1)
@@ -69,6 +71,55 @@ void DigitImageByte::printPixels(unsigned char threshold, int binary)
 		}
 		std::cout << std::endl;
 	}
+}
+
+#pragma endregion
+
+void DigitImageByte::histogram(unsigned int histo[256])
+{
+	for (size_t ii = 0; ii < size(); ii++)
+		histo[_pixels[ii]]++;
+}
+std::shared_ptr<unsigned int> DigitImageByte::histogram()
+{
+	unsigned int *histo = new unsigned int[256];
+	std::memset(histo, 0, 256);
+	histogram(histo);
+	return std::shared_ptr<unsigned int>(histo);
+}
+
+
+unsigned char DigitImageByte::threshold_Otsu()
+{
+	// Maximize between class variance using Otsu's method
+	double N = size();
+	std::shared_ptr<unsigned int> histo = histogram();
+
+	double w0 = 0, w1 = 0;
+	double u0, u1, uk = 0, uT = 0;
+	for (unsigned int i = 0; i < 255; i++)
+		uT += (i + 1)*histo.get()[i] / N;
+	double max = 0;
+	unsigned int lvl_threshold = 0;
+	// Find max 'between class variance'
+	for (unsigned int i = 0; i < 256; i++)
+	{
+		double pi = histo.get()[i] / N;
+		w0 += pi;
+		w1 = 1 - w0;
+		uk += (i + 1) * pi;
+		u0 = uk / w0;
+		u1 = (uT - uk) / w1;
+		// Calc. and compare 'between' variance
+		double var_B = w0 * w1*(u1 - u0)*(u1 - u0);
+		if (var_B > max)
+		{
+			lvl_threshold = i;
+			max = var_B;
+		}
+	}
+	// Return the threshold
+	return lvl_threshold;
 }
 
 Point DigitImageByte::invertY(Point p)
@@ -132,39 +183,3 @@ std::vector<KernelByte> DigitImageByte::genKernels(int dim)
 	}
 	return kernels;
 }
-
-/*
-struct ContourPixel
-{
-public:
-	// Contour pixel id and index
-	int _ID, _index;
-	ContourPixel() : _ID(-1), _index(-1) {}
-	ContourPixel(int ID, int ind) : _ID(ID), _index(ind) {}
-};
-struct ContourImage
-{
-public:
-	std::vector<std::vector<Point>> _lines;
-	std::shared_ptr<ContourPixel> _map;
-	ContourImage(std::vector<std::vector<Point>> &lines, ContourPixel *contour_map) : _lines(lines), _map(contour_map) {}
-};
-ContourImage DigitImageByte::genContour(unsigned char threshold)
-{
-	std::vector<std::vector<Point>> lines = findContour(*this, threshold);
-	ContourPixel *img = new ContourPixel[size()];
-	memset(img, 0, sizeof(ContourPixel)*size());
-
-	for (unsigned int i = 0; i < lines.size(); i++)
-	{
-		std::vector<Point> &p = lines[i];
-		for (unsigned int ii = 0; ii < lines.size(); ii++)
-		{
-			int ind = index(p[ii]);
-			img[ind] = ContourPixel(i, ii);
-		}
-	}
-}
-
-*/
-

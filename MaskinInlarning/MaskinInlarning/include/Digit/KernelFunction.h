@@ -4,7 +4,7 @@
 
 /* Function constructing the feature graphs from the data and writing the feature vectors to the file.
 */
-void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, size_t img_to, int threshold, bool out_all = false);
+void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, size_t img_to, bool out_all = false);
 
 /* Output the segmented pixel sets created from the Disjoint sets on 4x4 and 7x7 kernels, and the contour point sets.
  */

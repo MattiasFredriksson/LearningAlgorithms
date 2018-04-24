@@ -37,7 +37,7 @@ void MNIST::print(int index, int mode)
 {
 	std::cout << "Image: " << index << "\n";
 	std::cout << "Digit: " << (int)_labels[index] << "\n";
-	_data[index]->print(mode == 0 ? 100 : 50, mode);
+	_data[index]->print(mode);
 }
 
 void MNIST::readLabel(const std::string& file)
@@ -102,19 +102,15 @@ void MNIST::normalize()
 }
 
 
-void MNIST::pixelHistogram()
+void MNIST::pixelHistogram(const std::string &file)
 {
 	unsigned int distr[256];
 	float distr_norm[256];
 	for (size_t i = 0; i < 256; i++) distr[i] = 0;
 	for (size_t i = 0; i < size(); i++)
-	{
-		DigitImageByte *img = _data[i];
-		for (size_t ii = 0; ii < img->size(); ii++)
-			distr[img->_pixels[ii]]++;
-	}
+		_data[i]->histogram(distr);
 
-	Log out("PixelDist.txt", true, false, false);
+	Log out(file, true, false, false);
 	out << "Distribution:\n";
 	for (size_t i = 0; i < 256; i++)
 		out << distr[i] << (i < 255 ? ", " : "\n");
@@ -128,9 +124,9 @@ void MNIST::pixelHistogram()
 }
 
 
-void MNIST::printFeatures(std::string &file, unsigned char treshold, size_t img_from, size_t img_to)
+void MNIST::printFeatures(std::string &file, size_t img_from, size_t img_to)
 {
-	outputFeatures(*this, file, 2, img_from, img_to, treshold);
+	outputFeatures(*this, file, 2, img_from, img_to);
 }
 void MNIST::printLabels(std::string &file, size_t img_from, size_t img_to)
 {;

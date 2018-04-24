@@ -37,7 +37,7 @@ public:
 	void normalize();
 	/* Calc. a histogram of the different pixels.
 	*/
-	void pixelHistogram();
+	void pixelHistogram(const std::string &out_file);
 
 	/* Get a loaded image by index.
 	*/
@@ -45,7 +45,7 @@ public:
 
 	/* Output the feature vectors.
 	*/
-	void printFeatures(std::string &file, unsigned char treshold, size_t img_from = 0, size_t img_to = 0);
+	void printFeatures(std::string &file, size_t img_from = 0, size_t img_to = 0);
 	/* Output the label vector.
 	*/
 	void printLabels(std::string &file, size_t img_from = 0, size_t img_to = 0);

@@ -547,7 +547,7 @@ void outputGraph(MNIST &mnist, int dim, int simplify, int img_from, int img_to, 
 
 /* Function constructing the feature graphs from the data and writing the feature vectors to the file.
 */
-void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, size_t img_to, int threshold, bool out_all)
+void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, size_t img_to, bool out_all)
 {
 	Log log(file, true, false, false);
 	size_t max_node = 0;
@@ -558,6 +558,8 @@ void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, s
 		std::cout << "Processing: " << i << "\n";
 
 		DigitImageByte *img = mnist.getImg(i);
+		int threshold = (int)img->threshold_Otsu();
+
 
 		//Create graph from image.
 		std::unique_ptr<Graph> graph;
@@ -662,12 +664,12 @@ void verifyKernels(DigitImageByte *img)
 	std::vector<KernelByte> kernels = img->genKernels(4);
 
 	for (size_t i = 0; i < kernels.size(); i++) transformPrint(kernels[i], i);
-	img->print(5, 1);
+	img->print(5);
 
 
 	kernels = img2.genKernels(4);
 	for (size_t i = 0; i < kernels.size(); i++) transformPrint(kernels[i], i);
-	img2.print(5, 1);
+	img2.print(5);
 
 }
 
