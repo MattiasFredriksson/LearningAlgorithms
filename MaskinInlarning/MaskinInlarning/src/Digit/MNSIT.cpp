@@ -28,10 +28,25 @@ MNIST::~MNIST()
 		delete _data[i];
 }
 
-MNIST::MNIST(const MNIST& copy)
+MNIST::MNIST(MNIST&& copy)
+	: _labels(std::move(copy._labels)), _data(std::move(copy._data))
 {
-	throw std::exception("TODO: Not implemented");
+	_labels = copy._labels;
+	_data = copy._data;
 }
+
+
+MNIST& MNIST::operator=(MNIST&& copy)
+{
+	if (&copy == this) return *this;
+	for (unsigned int i = 0; i < _data.size(); i++)
+		delete _data[i];
+	_labels = std::move(copy._labels);
+	_data = std::move(copy._data);
+	return *this;
+}
+
+
 
 void MNIST::print(int index, int mode)
 {
@@ -124,11 +139,11 @@ void MNIST::pixelHistogram(const std::string &file)
 }
 
 
-void MNIST::printFeatures(std::string &file, size_t img_from, size_t img_to)
+void MNIST::printFeatures(const std::string &file, size_t img_from, size_t img_to)
 {
 	outputFeatures(*this, file, 2, img_from, img_to);
 }
-void MNIST::printLabels(std::string &file, size_t img_from, size_t img_to)
+void MNIST::printLabels(const std::string &file, size_t img_from, size_t img_to)
 {;
 	if (img_to <= img_from) img_to = _labels.size();
 	std::stringstream label;

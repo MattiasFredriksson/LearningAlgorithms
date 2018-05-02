@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from timeit import default_timer as timer
 
 # n test runs for every specified classifier
-n = 1
+n = 5
 
 #Metrics
 #0: Time, 1: Accurracy, 2: F-measure
@@ -44,8 +44,8 @@ for i in metric_used:
 
 classifiers = [
 neighbors.KNeighborsClassifier(n_neighbors=5, weights='distance'),
-#tree.DecisionTreeClassifier(),
-#svm.SVC(max_iter=-1, kernel='rbf', class_weight=None)
+tree.DecisionTreeClassifier(),
+svm.SVC(max_iter=-1, kernel='rbf', class_weight=None)
 ]
 
 # Result lists

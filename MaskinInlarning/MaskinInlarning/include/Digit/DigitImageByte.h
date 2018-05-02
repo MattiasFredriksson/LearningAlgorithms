@@ -16,6 +16,7 @@ public:
 	DigitImageByte();
 	DigitImageByte(size_t dimX, size_t dimY);
 	DigitImageByte(const DigitImageByte &copy);
+	DigitImageByte& operator=(const DigitImageByte &copy);
 	~DigitImageByte();
 
 	void print(int mode = 0);

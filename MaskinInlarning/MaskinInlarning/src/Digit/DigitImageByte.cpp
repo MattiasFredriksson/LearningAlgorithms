@@ -21,6 +21,17 @@ DigitImageByte::DigitImageByte(const DigitImageByte &copy)
 	for (size_t i = 0; i < copy.size(); i++)
 		_pixels[i] = copy._pixels[i];
 }
+DigitImageByte& DigitImageByte::operator=(const DigitImageByte &copy)
+{
+	if (this == &copy) return *this;
+	delete[] _pixels;
+	_width = copy._width;
+	_height = copy._height;
+	_pixels = new unsigned char[copy.size()];
+	for (size_t i = 0; i < copy.size(); i++)
+		_pixels[i] = copy._pixels[i];
+	return *this;
+}
 
 #pragma region Print stuff
 

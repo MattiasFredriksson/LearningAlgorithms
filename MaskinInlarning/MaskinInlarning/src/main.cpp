@@ -19,18 +19,26 @@ int main()
 
 	MNIST data(1);
 
-	int ind = 0;
-	if (ind >= 0)
-	{
+	int ind = -1;
+	if (ind >= 0) {
 		data.print(ind);
 		data.print(ind, 2);
 		data.print(ind, 1);
 	}
-	std::string label = "label.txt";
-	std::string feat = "features.txt";
-	//data.printLabels(label);
-	//data.printFeatures(feat, 50);
 
+	//data.printLabels("label.txt");
+	//data.printFeatures("features.txt", 50);
+	
+	// Output data
+	if(true)
+	{
+		//data.printFeatures("../../Digit-Sckit-Eval/feature/features_train.txt");
+		//data.printLabels("../../Digit-Sckit-Eval/feature/label_train.txt");
+
+		data = MNIST(2);
+		data.printFeatures("../../Digit-Sckit-Eval/feature/features_test.txt");
+		data.printLabels("../../Digit-Sckit-Eval/feature/label_test.txt");
+	}
 	//outputGraph(data, 2, 4, 0, 100, 50);
 	//outputSegmentedKernels(data, 0, 100, 50);
 

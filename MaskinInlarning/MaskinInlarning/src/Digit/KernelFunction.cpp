@@ -174,8 +174,11 @@ std::unique_ptr<Graph> generateGraph(DigitImageByte *img, int kernel_dim, unsign
 	return std::unique_ptr<Graph>(new Graph(new BinaryImage(img, threshold, true), graph));
 }
 
-void outputFeatures(FeatureGraph *graph, unsigned int max_nodes, Log &log)
+bool outputFeatures(FeatureGraph *graph, unsigned int max_nodes, Log &log)
 {
+	if (graph->_edges.size() == 0)
+		return false;
+
 	std::stringstream feature;
 
 	//Print first feature:
@@ -207,6 +210,7 @@ void outputFeatures(FeatureGraph *graph, unsigned int max_nodes, Log &log)
 	}
 
 	log.logMsg(feature);
+	return true;
 }
 void outputFeatureGraph(FeatureGraph *graph, std::string &file)
 {
@@ -547,7 +551,7 @@ void outputGraph(MNIST &mnist, int dim, int simplify, int img_from, int img_to, 
 
 /* Function constructing the feature graphs from the data and writing the feature vectors to the file.
 */
-void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, size_t img_to, bool out_all)
+void outputFeatures(MNIST &mnist, const std::string &file, int dim, size_t img_from, size_t img_to, bool out_all)
 {
 	Log log(file, true, false, false);
 	size_t max_node = 0;
@@ -592,7 +596,8 @@ void outputFeatures(MNIST &mnist, std::string &file, int dim, size_t img_from, s
 			outputGraph(graph.get(), file);
 			outputFeatureGraph(feature.get(), feature_gfile);
 		}
-		outputFeatures(feature.get(), 16, log);
+		if (!outputFeatures(feature.get(), 16, log))
+			i--; // Bug somewhere, redo
 	}
 
 	std::cout << "Max node: " << max_node << "\n";

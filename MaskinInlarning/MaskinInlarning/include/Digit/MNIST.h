@@ -17,7 +17,10 @@ public:
 	std::vector<unsigned char> _labels;
 
 	MNIST(int load_data = 1);
-	MNIST(const MNIST& copy);
+	MNIST(const MNIST& copy) = delete;
+	MNIST&operator=(const MNIST& copy) = delete;
+	MNIST(MNIST&& copy);
+	MNIST& operator=(MNIST&& copy);
 	~MNIST();
 
 	/* Read images from the specific file in the format related to the MNIST data.
@@ -45,8 +48,8 @@ public:
 
 	/* Output the feature vectors.
 	*/
-	void printFeatures(std::string &file, size_t img_from = 0, size_t img_to = 0);
+	void printFeatures(const std::string &file, size_t img_from = 0, size_t img_to = 0);
 	/* Output the label vector.
 	*/
-	void printLabels(std::string &file, size_t img_from = 0, size_t img_to = 0);
+	void printLabels(const std::string &file, size_t img_from = 0, size_t img_to = 0);
 };
