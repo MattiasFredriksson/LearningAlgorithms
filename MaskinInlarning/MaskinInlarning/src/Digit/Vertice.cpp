@@ -86,8 +86,8 @@ AxisWidth Vertice::calcWidth()
 			res.p_max = std::fmaxf(res.p_max, d);
 		}
 		else {
-			res.n_min = std::fminf(res.p_min, d);
-			res.n_max = std::fmaxf(res.p_max, d);
+			res.n_min = std::fminf(res.n_min, d);
+			res.n_max = std::fmaxf(res.n_max, d);
 		}
 	}
 	if (std::isinf(res.p_max) || std::isinf(res.p_min) || std::isinf(res.n_max) || std::isinf(res.n_min))
