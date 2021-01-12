@@ -12,6 +12,51 @@ using namespace std;
  */
 class DisjointSets
 {
+public:
+	/* Initiate with the number of graph nodes. */
+	DisjointSets();
+	DisjointSets(int size);
+	DisjointSets(const DisjointSets &orig);
+	virtual ~DisjointSets();
+	DisjointSets& operator=(const DisjointSets &orig);
+
+	/* Connect two nodes and their related sets if they are not already connected. */
+	void connect(int x, int y);
+	/* Find the index of the root associated with the node at index. */
+	int find(int index) const;
+	/* Find the index of the root associated with the node at index. Compressing all searched nodes. */
+	int findCompress(int index);
+
+	/* Generate a record of a converted structure so negative values represent a set index identifier instead of rank. 
+	min_rank	<<	Minimum rank required by a element for it to be given a set ID.
+	*/
+	void generateRecord(int min_rank);
+	/* Restore structure to normal mode to allow further editing. */
+	void rankMode();
+	/* Apply the generated record, transforming the set so that root nodes represent index nodes.
+	 * Ensure a record is generated first.
+	*/
+	void indexMode();
+	/**/
+	std::vector<std::vector<int>> getSets(int min_rank);
+
+	/* Get the index of the set related to node at the index (ensure structure is in index mode!)
+	 * Unqualified elments are represented by -1.
+	*/
+	int getSetIndex(int ind);
+	/* Change an index representation to another number. */
+	void renameIndex(int index, int new_name);
+	
+	/* Find largest rank of any set.*/
+	int maxHeight() const;
+	/* Get number of disjoint sets. */
+	int numSet();
+	/* Get number of disjoint sets with a minimum rank. Rank 0 represent the single element. */
+	int numSet(int min_rank);
+
+	/* Find index of the root associated with the node at index. */
+	int operator[](unsigned int index) { return find(index); }
+
 private:
 	/* Set of parent index links for each graph node. */
 	int* _links;
@@ -31,45 +76,6 @@ private:
 	/* Union two sets by their root node indices. */
 	void unionRoot(int root1, int root2);
 
-
-public:
-	/* Initiate with the number of graph nodes. */
-	DisjointSets();
-	DisjointSets(int size);
-	DisjointSets(const DisjointSets &orig);
-	virtual ~DisjointSets();
-	DisjointSets& operator=(const DisjointSets &orig);
-
-	/* Connect two nodes and their related sets if they are not already connected. */
-	void connect(int x, int y);
-	/* Find the root of node at index. */
-	int find(int index) const;
-	/* Find the root of node at index. Compressing all searched nodes. */
-	int findCompress(int index);
-
-	/* Generate a record of a converted structure so negative values represent a set index identifier instead of rank. */
-	void generateRecord(int min_rank);
-	/* Restore structure to normal mode. */
-	void rankMode();
-	/* Apply the generated record. */
-	void indexMode();
-	/**/
-	std::vector<std::vector<int>> getSets(int min_rank);
-
-	/* Get the index of the set related to node at the index (for current record). */
-	int getSetIndex(int ind);
-	/* Change an index representation to another number. */
-	void renameIndex(int index, int new_name);
-	
-	/* Find largest rank of any set.*/
-	int maxHeight() const;
-	/* Get number of disjoint sets. */
-	int numSet();
-	/* Get number of disjoint sets with a minimum rank. Rank 0 represent the single element. */
-	int numSet(int min_rank);
-
-	/* Access set root. */
-	int operator[](unsigned int index) { return find(index); }
 
 };
 

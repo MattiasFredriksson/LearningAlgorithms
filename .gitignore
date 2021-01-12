@@ -13,6 +13,7 @@ Exercise-Image_Recognition/training/
 *.log
 *.ipdb
 *.iobj
+*.npy
 
 # Folder config file
 Desktop.ini

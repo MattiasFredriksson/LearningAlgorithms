@@ -184,7 +184,10 @@ bool outputFeatures(FeatureGraph *graph, unsigned int max_nodes, Log &log)
 	//Print first feature:
 	FeatureGraph::Edge *e = graph->_edges[0];
 	Vector dir = e->dir();
-	feature << dir.X << "," << dir.Y << "," << e->_len << "," << e->getWidth();
+	dir.normalize();
+	float w = isfinite(e->getWidth()) ? e->getWidth() : 0;
+	float len = isfinite(e->_len) ? e->_len : 0;
+	feature << std::atan2(dir.Y, dir.X) << "," << len << "," << w;
 
 	//Print Features:
 	unsigned int i = 1;
@@ -194,7 +197,7 @@ bool outputFeatures(FeatureGraph *graph, unsigned int max_nodes, Log &log)
 		Vector ndir = e->dir();
 		float a = angleDiff(dir, ndir);
 		float len = e->_len;
-		float w = e->getPixels(); //e->getWidth();
+		w = e->getWidth();
 		//Assert finite values:
 		if (!std::isfinite(a)) a = 0;
 		if (!std::isfinite(len)) len = 0;
@@ -530,12 +533,15 @@ void outputGraph(MNIST &mnist, int dim, int simplify, int img_from, int img_to, 
 			float err = 4.f;
 			graph->generateOGraph();
 			graph->simplify_candidate(err);
-			//Iteratively continue to reduce by increasing error limit.
-			while (graph->_nodes.size() > 8)
+			if (simplify > 4)
 			{
-				//graph->restrutureOGraph();
-				if (!graph->simplify_candidate(err += 4))
-					break; //Not possible to merge any node with this method
+				//Iteratively continue to reduce by increasing error limit.
+				while (graph->_nodes.size() > 8)
+				{
+					//graph->restrutureOGraph();
+					if (!graph->simplify_candidate(err += 4))
+						break; //Not possible to merge any node with this method
+				}
 			}
 		}
 		if (simplify > 3)

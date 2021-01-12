@@ -32,15 +32,18 @@ int main()
 	// Output data
 	if(true)
 	{
-		//data.printFeatures("../../Digit-Sckit-Eval/feature/features_train.txt");
-		//data.printLabels("../../Digit-Sckit-Eval/feature/label_train.txt");
+		data.printFeatures("../../Digit-Sckit-Eval/feature/features_train.txt");
+		data.printLabels("../../Digit-Sckit-Eval/feature/label_train.txt");
 
 		data = MNIST(2);
 		data.printFeatures("../../Digit-Sckit-Eval/feature/features_test.txt");
 		data.printLabels("../../Digit-Sckit-Eval/feature/label_test.txt");
 	}
-	//outputGraph(data, 2, 4, 0, 100, 50);
-	//outputSegmentedKernels(data, 0, 100, 50);
+	if (false)
+	{
+		outputGraph(data, 2, 4, 0, 100, 50);
+		//outputSegmentedKernels(data, 0, 100, 50);
+	}
 
 	//data.pixelHistogram("PixelDist.txt");
 	

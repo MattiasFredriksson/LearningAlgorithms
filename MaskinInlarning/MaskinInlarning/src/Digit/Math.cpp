@@ -193,7 +193,7 @@ std::vector<float> unitAxis(unsigned int n, int axis_ind)
 
 #pragma endregion
 
-/* Power iteration method (potens metoden) for finding the dominant eigen value (in absolut value) and related eigen vector.
+/* Power iteration method (potens metoden) for finding the dominant eigen value (in absolute value) and related eigen vector.
 A		<<	NxN matrix
 n		<<	N == matrix dimension
 eigen_v	<>	Output eigen vector and used as input of initial search vector (if size() == 0 [1,0,..,0] is used).

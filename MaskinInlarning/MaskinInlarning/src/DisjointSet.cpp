@@ -48,7 +48,7 @@ DisjointSets::~DisjointSets(){
 #pragma region Functions
 
 int DisjointSets::find(int index) const{
-	// Find compressing first node.
+	// Find compresses the node at index.
 	int parent = _links[index];
 	if (parent < 0) return index;
 	int node;
@@ -194,6 +194,7 @@ void DisjointSets::generateRecord(int min_rank)
 /* Restore structure to normal mode. */
 void DisjointSets::rankMode()
 {
+	assert(_record.size() > 0);
 	for (unsigned int i = 0; i < _record.size(); i++)
 		_links[_record[i].ind_link] = _record[i].rank;
 }
@@ -201,6 +202,7 @@ void DisjointSets::rankMode()
 /* Apply the generated record. */
 void DisjointSets::indexMode()
 {
+	assert(_record.size() > 0);
 	for (unsigned int i = 0; i < _record.size(); i++)
 		_links[_record[i].ind_link] = toLinkIndex(_record[i].ind_id);
 }

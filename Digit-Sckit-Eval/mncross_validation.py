@@ -7,8 +7,8 @@ from sklearn.preprocessing import StandardScaler
 from timeit import default_timer as timer
 
 # n test runs for every specified classifier
-n = 1
-folds = 3;
+n = 5
+folds = 5;
 
  #0: Time, 1: Accurracy, 2: F-measure
 measure_var = 1
@@ -19,8 +19,8 @@ except:
 metric_used = [1,2] #Time is always used
 metric_names = ["Time", "Accuracy", "F-measure"]
 
-X = np.load("features_train.npy")
-y = np.load("label_train.npy")
+X = np.load("feature/features_train.npy")
+y = np.load("feature/label_train.npy")
 
 #Normalization scaler
 scaler = StandardScaler()
@@ -39,11 +39,11 @@ for i in metric_used:
 
 classifiers = [
 neighbors.KNeighborsClassifier(n_neighbors=5, weights='distance'),
-#cluster.KMeans(n_clusters=5, random_state=0),
-#tree.DecisionTreeClassifier(),
-#svm.SVC(max_iter=-1, kernel='linear', class_weight=None),
-#svm.SVC(max_iter=-1, kernel='rbf', class_weight=None),
-#naive_bayes.GaussianNB(priors=None)
+cluster.KMeans(n_clusters=5, random_state=0),
+tree.DecisionTreeClassifier(),
+svm.SVC(max_iter=-1, kernel='linear', class_weight=None),
+svm.SVC(max_iter=-1, kernel='rbf', class_weight=None),
+naive_bayes.GaussianNB(priors=None)
 ]
 
 # Result lists
@@ -57,46 +57,39 @@ for i in range(0, len(metric_used)+1):
 print("\nRunning ", n, " tests...\n")
 run_start = timer()
 #Perform n tests
+process_timer = timer()
 for i in range(0,n):
     # Generate folds:
     split = skf.split(X, y);
     fold = 0
     print("\Test ", i, " ...\n")
-    fold_timer = timer()
     # Run tests for every classifier on every fold:
     for train_ind, val_ind in split:
+        fold_timer = timer()
         #Preprocess fold
-        process_timer = timer()
         X_train = X[train_ind]; y_train = y[train_ind]
         X_val = X[val_ind]; y_val = y[val_ind]
         scaler.fit(X_train);
         X_train = scaler.transform(X_train)
         X_val = scaler.transform(X_val)
-        print("Process time: ", process_timer)
         for clf_i in range(0,len(classifiers)):
-            print("1 : ",timer())
             # Run test:
             clf = classifiers[clf_i]
-            print("2 : ",timer())
             start = timer()
             clf.fit(X_train, y_train)
             #Evaluate time:
             result[0][clf_i][fold] += (timer()-start) / n
             # Evaluate metrics:
-            print("3 : ",timer())
-            print("Len Train : ",size(X_train,0))
-            print("Len Val : ",size(X_val,0))
             y_res = clf.predict(X_val)
-            print("4 : ",timer())
             for ii in range(0, len(metric)):
                 res = metric[ii](y_val, y_res)      #Calc. metric
                 result[ii+1][clf_i][fold] += res / n; #Average and store
             #end metric iteration
-            print("5 : ",timer())
         #end classifier iteration
         fold += 1
         print("Fold ", fold , " complete, time: ", (timer()-fold_timer))
     #end fold iterations
+    print("Process time: ", timer() - process_timer)
     print("Test ", i+1 , " complete...")
 #end dataset iteration
 

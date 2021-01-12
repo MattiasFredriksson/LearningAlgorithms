@@ -34,7 +34,9 @@ FeatureGraph::Edge* FeatureGraph::connect(Node* n1, Node *n2,float n_width, floa
 	e->_w_node = n_width;
 	e->_w_con = n2_width;
 	e->_index = _edges.size();
+	e->_len = (n1->_point - n2->_point).length();
 	_edges.push_back(e);
+	
 
 	n1->_edges.push_back(e);
 	n2->_edges.push_back(e);
