@@ -29,7 +29,9 @@ int main()
 	//data.printLabels("label.txt");
 	//data.printFeatures("features.txt", 50);
 	
-	// Output data
+	// Simple input arguments
+
+	// Output feature data from mnist database
 	if(true)
 	{
 		data.printFeatures("../../Digit-Sckit-Eval/feature/features_train.txt");
@@ -39,6 +41,7 @@ int main()
 		data.printFeatures("../../Digit-Sckit-Eval/feature/features_test.txt");
 		data.printLabels("../../Digit-Sckit-Eval/feature/label_test.txt");
 	}
+	// Generate .m files for plotting graphs over intermediate steps
 	if (false)
 	{
 		outputGraph(data, 2, 4, 0, 100, 50);
